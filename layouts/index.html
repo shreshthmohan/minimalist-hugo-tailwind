@@ -1,0 +1,24 @@
+{{ define "heading" }}
+
+<div class="pt-10 pb-24 mx-auto" style="max-width: 65ch;">
+  <!-- <div> -->
+  <!-- <h1 class="text-4xl font-semibold text-gray-800">{{ .Site.Title }}</h1> -->
+  <!-- <p class="-mt-2">{{ .Site.Params.tagline }}</p> -->
+  <!-- </div> -->
+  {{ end }} {{ define "content" }}
+  <section class="my-20">
+    <ol class="px-0">
+      {{ range .Site.RegularPages -}}
+      <li class="mb-4 md:flex md:flex-row text-xl items-center py-2">
+        <a class="w-4/5 pr-4" href="{{ .RelPermalink }}"
+          ><div class="text-gray-900">{{ .Title }}</div>
+          <div class="text-base text-gray-600">{{ .Params.Subtitle }}</div>
+        </a>
+        <time class="block w-1/5 text-gray-400 text-base"
+                datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "January 02 2006"}}</time>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+</div>
+{{ end }}

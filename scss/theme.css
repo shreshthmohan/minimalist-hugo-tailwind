@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+
+.highlight {
+  @apply py-4;
+}
+
+pre.chroma {
+  @apply p-4 rounded-lg;
+}
+
+h2 {
+  @apply text-lg;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: transparent;
+}
+
+p {
+  @apply py-2;
+}
+
+@tailwind utilities;
