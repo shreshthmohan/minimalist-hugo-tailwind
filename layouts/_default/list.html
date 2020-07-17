@@ -7,7 +7,7 @@
          we used that instead of the usual title and subtitle here -->
     {{ if .Params.ShowAvatar }}
         {{ if .Site.Params.Avatar }}
-            <img class="hidden md:block w-40 rounded-full mx-auto" src="{{ .Site.Params.Avatar | absURL }}"
+            <img class="w-40 rounded-full mx-auto" src="{{ .Site.Params.Avatar | absURL }}"
                 alt="{{ .Site.Params.Author }}">
         {{ end }}
     {{ end}}
