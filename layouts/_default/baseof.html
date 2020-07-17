@@ -85,40 +85,27 @@
     <style>
       html {
         font-size: 20px;
+        height: 100%;
       }
       body {
         margin: 0px;
+        height: 100%;
       }
     </style>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {{ partial "navigation.html" . }}
-      <!-- All the pages must have a heading block, defaults to a link for the home page and a title. -->
+    <div class="main-container flex flex-col min-h-full">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
+        {{ partial "navigation.html" . }}
+        <!-- All the pages must have a heading block, defaults to a link for the home page and a title. -->
 
-      {{ block "heading" . }} {{ end }}
+        {{ block "heading" . }} {{ end }}
 
-      <!-- The content block. -->
-      {{ block "content" . }}{{ end }}
-    </div>
-    <footer class="pt-4 pb-6 bg-gray-200 px-4">
-      <div style="max-width: 65ch;" class="mx-auto">
-        <p>
-          Hey! I am Shreshth, and I am gradually exiting my job. This site is an
-          attempt to share my progress while I try to live a more intentional
-          and fulfilling life. If you want to talk to me, find me on
-          <a class="underline" href="https://twitter.com/shreshthmohan"
-            >Twitter</a
-          >
-          or email me at
-          <a
-            target="_blank"
-            class="underline hover:text-blue-300"
-            href="mailto:shreshthmohan@hey.com"
-            >shreshthmohan@hey.com</a
-          >
-        </p>
+        <!-- The content block. -->
+        {{ block "content" . }}{{ end }}
       </div>
-    </footer>
+    </div>
+    {{ partial "footer.html" . }}
 
+    <!-- some text -->
     {{ template "_internal/google_analytics.html" . }}
   </body>
 </html>

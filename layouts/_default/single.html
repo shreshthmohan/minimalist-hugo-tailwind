@@ -1,5 +1,5 @@
 {{ define "heading" }}
-<div class="pt-10 pb-24 mx-auto" style="max-width: 65ch;" >
+<div class="md:pt-10 md:pb-24 mx-auto" style="max-width: 65ch;" >
     <div class="text-center entry-header">
     <!-- Title and Publication Date -->
     <h1 class="text-4xl text-gray-700 -mb-1">{{ .Title }}</h1>
@@ -10,14 +10,15 @@
 {{ end }}
 
 {{ define "content" }}
-<div class="pt-12">
+<div class="pt-6 pb-12">
     {{ .Content }}
+
+    {{ if .Date }}<time class="text-gray-400 text-sm"
+    datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "02 January 2006" }}</time>
+    {{ end }}
 
     {{ template "_internal/disqus.html" . }}
 </div>
-{{ if .Date }}<time class="text-gray-400 text-sm"
-datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "02 January 2006" }}</time>
-{{ end }}
 
 
 
