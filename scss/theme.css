@@ -34,4 +34,13 @@ p {
   @apply py-1;
 }
 
+*, :after, :before {
+  box-sizing: border-box;
+  border: 0 solid #d2d6dc;
+}
+
+table {
+  border-collapse: collapse;
+}
+
 @tailwind utilities;
