@@ -6,9 +6,9 @@
         <!-- Example: if there's an avatar / photo defined and an alternate title defined,
          we used that instead of the usual title and subtitle here -->
         {{ if .Params.ShowAvatar }}
-            {{ if .Site.Params.Avatar }}
-                <img class="w-40 rounded-full mx-auto" src="{{ .Site.Params.Avatar | absURL }}" alt="{{ .Site.Params.Author }}">
-            {{ end }}
+        {{ if .Site.Params.Avatar }}
+        <img class="w-40 rounded-full mx-auto" src="{{ .Site.Params.Avatar | absURL }}" alt="{{ .Site.Params.Author }}">
+        {{ end }}
         {{ end}}
         {{ with .Params.AltTitle }}
         <h1 class="text-3xl text-gray-700 -mb-1">{{ . }}</h1>
@@ -21,17 +21,19 @@
     </div>
     {{ end }}
     {{ define "content" }}
-    <section class="pt-12">
+    <section class="">
         {{ .Content }}
         <ol class="px-0">
             {{ range .Pages -}}
-            <li class="mb-4 flex flex-col md:flex md:flex-row py-2">
+            <li class="mb-4 flex flex-col md:flex-row text-xl  py-2">
                 <a class="md:w-4/5 md:pr-6" href="{{ .RelPermalink }}">
-                    <div class="text-gray-900">{{ .Title }}</div>
+                    <div class="hover:text-red-500 text-gray-900">{{ .Title }}</div>
                     <div class="hidden md:block text-sm md:text-base text-gray-600">{{ .Params.Subtitle }}</div>
                 </a>
-                <time class="block  md:w-1/5 text-gray-400 text-base"
-                    datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "January 02 2006"}}</time>
+                <time datetime='{{ .Date.Format " 2006-01-02 15:04:05 MST" }}'
+                    class="block  md:w-1/5 text-gray-400 text-base">
+                    {{ .Date.Format "January 02 2006"}}
+                </time>
 
             </li>
             {{- end }}

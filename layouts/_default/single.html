@@ -10,11 +10,11 @@
     {{ end }}
 
     {{ define "content" }}
-    <div class="pt-6 pb-12">
+    <div class="pt-6 ">
         {{ .Content }}
 
-        {{ if .Date }}<time class="text-gray-400 text-sm"
-            datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "02 January 2006" }}</time>
+        {{ if .Date }}<time class="text-gray-400 text-sm" datetime="{{ .Date.Format " 2006-01-02 15:04:05 MST" }}">
+            {{.Date.Format "02 January 2006" }}</time>
         {{ end }}
 
         {{ template "_internal/disqus.html" . }}
@@ -24,11 +24,11 @@
 
     <!-- Tags -->
     {{ with .Params.tags }}
-    <ol class="mt-4">
+    <ol class="my-1 pl-0">
         {{ range . }}
         <li class="inline-block">
-            <a class="border-none text-gray-800 text-xs bg-gray-400 hover:bg-gray-600 hover:text-white rounded-sm px-3 py-1"
-                href="{{ "tags" | absURL }}/{{ . | urlize }}">{{ . }}</a>
+            <a href='{{ "tags" | absURL }}/{{ . | urlize }}'
+                class="uppercase border-gray-400 text-gray-500 text-xs border rounded-sm px-1">{{ . }}</a>
         </li>
         {{ end }}
     </ol>
