@@ -23,11 +23,12 @@
     {{ define "content" }}
     <section class="">
         {{ .Content }}
+        <!-- for taxonomy lists, look here -->
         <ol class="px-0">
             {{ range .Pages -}}
             <li class="mb-4 flex flex-col md:flex-row text-xl  py-2">
                 <a class="md:w-4/5 md:pr-6" href="{{ .RelPermalink }}">
-                    <div class="hover:text-red-500 text-gray-900">{{ .Title }}</div>
+                    <div class="hover:text-red-500 text-gray-900 dark:text-gray-200">{{ .Title }}</div>
                     <div class="hidden md:block text-sm md:text-base text-gray-600">{{ .Params.Subtitle }}</div>
                 </a>
                 <time datetime='{{ .Date.Format " 2006-01-02 15:04:05 MST" }}'

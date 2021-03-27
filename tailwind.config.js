@@ -13,11 +13,10 @@ module.exports = {
   //     }
   //   }
   // },
+  darkMode: "class",
   corePlugins: {
     preflight: false,
   },
   purge: false,
   variants: {},
-
-  plugins: [require("@tailwindcss/ui")],
 };

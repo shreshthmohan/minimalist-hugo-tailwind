@@ -11,10 +11,10 @@
       {{ range .Site.RegularPages -}}
       <li class="mb-4 flex flex-col md:flex-row text-xl  py-2">
         <a class="md:w-4/5 md:pr-6" href="{{ .RelPermalink }}">
-          <div class="hover:text-red-500 text-gray-900">{{ .Title }}</div>
-          <div class="hidden md:block text-sm md:text-base text-gray-600">{{ .Params.Subtitle }}</div>
+          <div class="hover:text-red-500 text-gray-900 dark:text-gray-300">{{ .Title }}</div>
+          <div class="hidden md:block text-sm md:text-base dark:text-gray-400 text-gray-600">{{ .Params.Subtitle }}</div>
         </a>
-        <time class="block  md:w-1/5 text-gray-400 text-base" datetime='{{ .Date.Format "2006-01-02 15:04:05 MST" }}'>
+        <time class="block  md:w-1/5 dark:text-gray-500 text-gray-400 text-base" datetime='{{ .Date.Format "2006-01-02 15:04:05 MST" }}'>
           {{.Date.Format "January 02 2006"}}
         </time>
       </li>
