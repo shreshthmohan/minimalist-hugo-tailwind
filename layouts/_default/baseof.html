@@ -1,87 +1,117 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Params.LanguageCode }}">
+  <head>
+    <meta charset="utf-8" />
+    {{ hugo.Generator }}
 
-<head>
-  <meta charset="utf-8" />
-  {{ hugo.Generator }}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}"
+    />
+    <meta
+      name="twitter:description"
+      content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify }}{{ end }}"
+    />
+    <meta name="twitter:site" content="{{ .Site.BaseURL }}" />
+    <meta name="twitter:creator" content="{{ .Params.Author }}" />
+    <meta name="twitter:image" content="{{ .Site.Params.Avatar | absURL }}" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title"
-    content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}" />
-  <meta name="twitter:description"
-    content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
-  <meta name="twitter:site" content="{{ .Site.BaseURL }}" />
-  <meta name="twitter:creator" content="{{ .Params.Author }}" />
-  <meta name="twitter:image" content="{{ .Site.Params.Avatar | absURL }}" />
+    <!-- Open-Graph Data -->
+    <meta property="og:locale" content="{{ .Site.Params.LanguageCode }}" />
+    <meta
+      property="og:type"
+      content="{{ if .IsHome }}website{{ else }}article{{ end }}"
+    />
+    <meta
+      property="og:title"
+      content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}"
+    />
+    <meta
+      property="og:description"
+      content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify }}{{ end }}"
+    />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+    <meta property="og:image" content="{{ .Site.Params.Avatar | absURL }}" />
 
-  <!-- Open-Graph Data -->
-  <meta property="og:locale" content="{{ .Site.Params.LanguageCode }}" />
-  <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}" />
-  <meta property="og:title"
-    content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}" />
-  <meta property="og:description"
-    content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
-  <meta property="og:url" content="{{ .Permalink }}" />
-  <meta property="og:site_name" content="{{ .Site.Title }}" />
-  <meta property="og:image" content="{{ .Site.Params.Avatar | absURL }}" />
+    <title>
+      {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }} {{ end }}
+    </title>
 
-  <title>
-    {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }} {{ end }}
-  </title>
+    <meta name="author" content="{{ .Site.Params.Author }}" />
+    <meta
+      name="description"
+      content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify }}{{ end }}"
+    />
 
-  <meta name="author" content="{{ .Site.Params.Author }}" />
-  <meta name="description"
-    content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
+    <!-- RSS -->
+    {{ with .OutputFormats.Get "RSS" }}
+    <link
+      rel="alternate"
+      href="{{ .RelPermalink | absURL }}"
+      type="application/rss+xml"
+      title="{{ $.Site.Title }}"
+    />
+    {{ end }}
 
-  <!-- RSS -->
-  {{ with .OutputFormats.Get "RSS" }}
-  <link rel="alternate" href="{{ .RelPermalink | absURL }}" type="application/rss+xml" title="{{ $.Site.Title }}" />
-  {{ end }}
+    <!-- Translations -->
+    {{ if .IsTranslated }} {{ range .Translations }}
+    <link
+      rel="alternate"
+      hreflang="{{ .Language.Lang }}"
+      href="{{ .Permalink }}"
+      title="{{ .Site.Title }}"
+    />
+    {{ end }} {{ end }}
 
-  <!-- Translations -->
-  {{ if .IsTranslated }} {{ range .Translations }}
-  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" title="{{ .Site.Title }}" />
-  {{ end }} {{ end }}
+    <!-- Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700"
+    />
+    <link rel="stylesheet" href="{{ "css/theme.css" | absURL }}"> <link
+    rel="stylesheet" href="{{ "css/chroma.monokailight.css" | absURL }}">
+  </head>
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700" />
-  <link rel="stylesheet" href="{{ "css/theme.css" | absURL }}">
-  <link rel="stylesheet" href="{{ "css/chroma.monokailight.css" | absURL }}">
-</head>
+  <body
+    class="dark:bg-gray-800 dark:text-gray-300 font-serif text-gray-800 leading-relaxed"
+  >
+    <style>
+      html {
+        font-size: 20px;
+        height: 100%;
+      }
 
-<body class="dark:bg-gray-800 dark:text-gray-300 font-serif text-gray-800 leading-relaxed">
-  <style>
-    html {
-      font-size: 20px;
-      height: 100%;
-    }
+      body {
+        margin: 0px;
+        height: 100%;
+      }
+    </style>
+        {{ partial "darkmode.html" }}
+    <div class="main-container flex flex-col min-h-full">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
+        {{ partial "navigation.html" . }}
+        <!-- All the pages must have a heading block, defaults to a link for the home page and a title. -->
 
-    body {
-      margin: 0px;
-      height: 100%;
-    }
-  </style>
-  <div class=" main-container flex flex-col min-h-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
-    
-      {{ partial "navigation.html" . }}
-      <!-- All the pages must have a heading block, defaults to a link for the home page and a title. -->
+        {{ block "heading" . }} {{ end }}
 
-      {{ block "heading" . }} {{ end }}
-
-      <!-- The content block. -->
-      {{ block "content" . }}{{ end }}
+        <!-- The content block. -->
+        {{ block "content" . }}{{ end }}
+      </div>
     </div>
-  </div>
-  {{ partial "footer.html" . }}
+    {{ partial "footer.html" . }}
 
-  <!-- some text -->
-  {{ template "_internal/google_analytics.html" . }}
-  <script defer language="javascript" type="text/javascript"  src="{{ "/js/dark.js" | urlize | relURL }}"></script>
-</body>
-
+    <!-- dark mode script -->
+    {{ template "_internal/google_analytics.html" . }}
+    <!-- dark mode script -->
+    <script defer language="javascript" type="text/javascript" src="{{ "/js/dark.js" | urlize | relURL }}" ></script>
+  </body>
 </html>
