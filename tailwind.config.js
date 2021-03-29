@@ -18,5 +18,9 @@ module.exports = {
     preflight: false,
   },
   purge: false,
-  variants: {},
+  variants: {
+    extend: {
+      textColor: ['visited']
+    }
+  },
 };
