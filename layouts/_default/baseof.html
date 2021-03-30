@@ -86,7 +86,7 @@
   >
     <style>
       html {
-        font-size: 16px;
+        font-size: 20px;
         height: 100%;
       }
 
@@ -94,9 +94,29 @@
         margin: 0px;
         height: 100%;
       }
+
+      .sm-youtube-embed-container {
+        overflow: hidden;
+        position: relative;
+        width:100%;
+      }
+
+      .sm-youtube-embed-container::after {
+        padding-top: 56.25%;
+        display: block;
+        content: '';
+      }
+
+      .sm-youtube-embed-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     </style>
-        {{ partial "darkmode.html" }}
-    <div class="main-container flex flex-col min-h-full">
+    {{ partial "darkmode.html" }}
+    <div class="main-container flex flex-col min-h-full"> 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
         {{ partial "navigation.html" . }}
         <!-- All the pages must have a heading block, defaults to a link for the home page and a title. -->
