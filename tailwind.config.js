@@ -1,19 +1,10 @@
+
+const colors = require("tailwindcss/colors");
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+
 module.exports = {
-  // theme: {
-  //   extend: {
-  //     flex: {
-  //       'l-24': '0 0 6rem'
-  //     },
-  //     fontFamily: {
-  //       serif: ['Arvo'],
-  //       mono: ['Source Code Pro']
-  //     },
-  //     padding: {
-  //       '1/2': '0.125rem'
-  //     }
-  //   }
-  // },
-  darkMode: "class",
+ darkMode: "class",
   corePlugins: {
     preflight: false,
   },
@@ -22,5 +13,15 @@ module.exports = {
     extend: {
       textColor: ['visited']
     }
+  },
+  theme: {
+    fontFamily: {
+      ...defaultTheme.fontFamily,
+      sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+    },
+     colors: {
+      ...defaultTheme.colors, 
+      green: colors.lime,
+    },
   },
 };
