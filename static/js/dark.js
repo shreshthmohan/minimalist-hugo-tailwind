@@ -1,6 +1,14 @@
 (function () {
   var darkTheme; // As set by user using the checkbox on the webpage
   // theme signifies light or dark
+
+  // TODO:
+  // Can be in three states:
+  // 1. System picks the system theme
+  // 2. Light
+  // 3. Dark
+  // Toggle between these using an input
+
   try {
     darkTheme = localStorage.getItem("theme");
   } catch (err) {}
@@ -18,9 +26,9 @@
     darkModeSwitch.checked = false;
   }
 
-  if (darkTheme === 'true') {
+  if (darkTheme === "true") {
     makeDark();
-  } else if (darkTheme === 'false') {
+  } else if (darkTheme === "false") {
     makeLight();
   } else {
     // use media query
